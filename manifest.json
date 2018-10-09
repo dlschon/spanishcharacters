@@ -1,0 +1,44 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 2,
+
+  "name": "Spanish Characters",
+  "description": "Making Spanish class easier! By Daniel Schon",
+  "version": "2.3",
+
+  "permissions": [
+	"contextMenus",
+	"clipboardRead",
+	"clipboardWrite"
+  ],
+  
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+  
+  "background": {
+    "scripts": ["js/context-menu.js"]
+  },
+  
+  "icons": {
+    "16": "icon/icon16.png",
+	"48": "icon/icon48.png",
+	"128": "icon/icon128.png"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": [
+		"js/jquery-1.10.2.min.js",
+		"js/bililiteRange.js",
+		"js/jquery.sendkeys.js",
+		"js/content-script.js"
+	  ]
+    }
+  ],
+  
+  "browser_action": {
+    "default_icon": "icon/icon19.png",
+    "default_popup": "popup.html"
+  }
+}
